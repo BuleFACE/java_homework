@@ -1,0 +1,110 @@
+ 一、
+c++中传值的方式：
+（1）传值传参
+相当于将变量复制一份拷贝过去函数中，不能改变原参数的值，如果要传出的话函数类型必须是又返回值的类型
+（2）地址传参
+传递的是变量的地址，能改变原参数的值，传出不需函数返回。
+（3）引用传参
+相当于给变量起个别名，对形参的操作影响到实参。传出不需函数返回。
+
+java传值的方式：
+（1）基本类型作为函数参数进行传递。
+传递的是值，也就是把实参的值拷贝一份传给形参，之后在函数体中所有的操作都是在形参上，永远不会改变实参的值。
+（二）通过对象进行传递，其实传递的是引用。
+将对象的引用拷贝一份传给形参。形参引用和实参引用指向的是同一个对象，但是在函数体中，我们所有的操作都只是对形参引用进行赋值运算，而对应用的赋值运算只会让引用重新指向另一个对象，因此函数体只是将这些拷贝出来的引用重新指向其它对象，并没有改变这些对象的值，也没有改变原来的实参引用指向的对象。
+（三）由于函数参数也是对象，传递的也是引用。
+以交换方法为例来讲，形参引用a与实参引用a指向的是同一个对象，形参引用b与实参引用b指向的也是同一个对象，而在函数体中，分别通过调用了形参a和形参b的set方法来改变了对象本身，因此也同时改变了实参引用a和实参引用b指向的对象，达到了交换a、b两个整数的目的。
+
+Java函数传递时，基本类型传递的是值，对象类型传递的是引用，无论是基本类型还是对象类型，在函数体中没有改变对象的操作的话原来对象就不会改变！
+
+二、
+如何实现多态性？
+静态多态：
+通过设置不同的参数列表来是实现同一个类上的同名方法的功能重载；(代码略)
+动态多态
+首先，创建一个父类，定义非静态成员方法
+然后，创建一个子类，这个子类实现父类所有的方法。
+最后，再创建其他子类，这个子类实现父类所以方法。
+
+code：
+class Animal{
+public int age;
+public Animal(){
+   age=1;
+}
+public void display(){
+	System.out.println("这只动物年龄为："+age);
+}
+}
+
+class cat extends Animal{
+public int weight;
+public cat(){
+weight=40;
+}
+public void display(){
+System.out.println("这只猫年龄为："+age);
+System.out.println("这只猫体重为："+weight);
+}
+}
+
+使用抽象类实现的多态性和普通类实现的多态性有什么优势？
+可以不用考虑父类的方法的实现，例如shape父类。
+code:
+//抽象类定义
+public class Circle : Shape
+    {
+        
+public Circle(double r)
+{
+            
+this.R = r;
+        
+}
+        
+public double R { get; set; }
+       
+public override double GetArea()
+        
+{
+            
+return Math.PI * this.R * this.R;
+       
+ }
+
+       
+public override double GetPerimeter()
+        {
+            return 2 * Math.PI * this.R;
+        
+}
+    }
+   
+
+
+使用接口是实现多态的优势:
+java不允许一个子类继承多个父类，但允许一个类实现多个接口从而实现多重继承。
+interface Dao{  //接口的方法全部都是非静态的方法。
+ 
+	public void add();
+ 
+	public void delete();
+}
+//接口的实现类
+
+class UserDao implements Dao{
+	
+	
+public void add(){
+		System.out.println("添加员工成功！！");
+	}
+ 
+	public void delete(){
+		System.out.println("删除员工成功！！");
+	}
+ 
+}
+
+
+
+
