@@ -12,9 +12,9 @@ public class Triangle extends MyShape{
 	
 	public Triangle(int xx,int xy,int yx,int yy,int zx,int zy)
 	{
-		point1=new MyPoint(xx,xy,"triangle");
-		point2=new MyPoint(yx,yy,"triangle");
-		point3=new MyPoint(zx,zy,"triangle");
+		point1=new MyPoint(xx,xy,"三角形");
+		point2=new MyPoint(yx,yy,"三角形");
+		point3=new MyPoint(zx,zy,"三角形");
 		tri_a=Math.sqrt(Math.pow((xx-yx),2)+Math.pow((xy-yy),2));
 		tri_b=Math.sqrt(Math.pow((xx-zx),2)+Math.pow((xy-zy),2));
 		tri_c=Math.sqrt(Math.pow((yx-zx),2)+Math.pow((yy-zy),2));
@@ -26,5 +26,8 @@ public class Triangle extends MyShape{
     return (Math.sqrt(p*(p-tri_a)*(p-tri_b)*(p-tri_c)));}
 	public String getProperty() {
 		return "三角形：a="+tri_a+"  b="+tri_b+"  c="+tri_c;
-	}	
+	}
+	public MyPoint point() {
+    	return point1;
+    }
 }

@@ -4,12 +4,12 @@
 package myGraph;
 
 public class Circle extends MyShape {
-	MyPoint center;
+	MyPoint point1;
     public int m_radius;
 
     public Circle(int x,int y,int r)
     {
-        center=new MyPoint(x,y,"circle");
+        point1=new MyPoint(x,y,"圆");
         m_radius=r;
     }
     public double getPerimeter(){
@@ -19,5 +19,8 @@ public class Circle extends MyShape {
     }
     public String getProperty() {
     	return "圆：r="+m_radius;
+    }
+    public MyPoint point() {
+    	return point1;
     }
 }

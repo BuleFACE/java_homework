@@ -16,6 +16,8 @@ static String getItemsString(String[] items) {
 static int input_choice(String[] paramStr) {
 	String items=getItemsString(paramStr);
 	String str=JOptionPane.showInputDialog(null,items,"请输入选择",JOptionPane.PLAIN_MESSAGE);
+	if(str==null) return paramStr.length+2;
+	if(str.length()==0) return paramStr.length+1;
 	int num=Integer.parseInt(str);
 	while(num<0||num>paramStr.length-1) 
     {
